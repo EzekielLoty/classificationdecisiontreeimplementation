@@ -13,7 +13,11 @@ class Node:
 class DecisionTree:
     def __init__(self):
         self.nodes = []
+        self.root = None
     
+    def set_root_node(self, node):
+        self.root = node
+
     def add_node(self, node):
         self.nodes.append(node)
 
@@ -22,5 +26,17 @@ def calculate_entropy(probabilities):
     total_entropy = -np.sum(probabilities * np.log2(probabilities))
     return total_entropy
 
-def calculate_information_gain(entropy_i, entropy_a):
-    return entropy_i - entropy_a
+def build_part_decision_tree(tree):
+    return
+
+def build_full_decision_tree(data):
+    total_rows = len(data)
+    target_col = data.columns[-1]
+
+    # probabilities of each class
+    probs = data[target_col].value_counts(normalize=True).tolist()
+
+    root_entropy = calculate_entropy(probs)
+    return root_entropy
+
+    
