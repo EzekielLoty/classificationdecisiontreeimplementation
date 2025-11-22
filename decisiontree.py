@@ -30,6 +30,7 @@ def build_part_decision_tree(tree):
     return
 
 def build_full_decision_tree(data):
+    #Calculate H(S) Root
     total_rows = len(data)
     target_col = data.columns[-1]
 
@@ -37,6 +38,15 @@ def build_full_decision_tree(data):
     probs = data[target_col].value_counts(normalize=True).tolist()
 
     root_entropy = calculate_entropy(probs)
-    return root_entropy
+
+    #Calculate Split Gain for each feature
+    # Code:
+    # for each column:
+    # have variable current biggest information game, and current column loc
+    # split column into unique values
+    # for each split get the probability for the target value and calculate entropy
+    # get weighted entropy by taking the # of that unique value divided by the total amount of rows
+    # them sum the weighted entropy of each to get the total weighted entropy 
+    # calculate information gain (root entropy - weighted sum entropy) and see if its the current biggest
 
     
